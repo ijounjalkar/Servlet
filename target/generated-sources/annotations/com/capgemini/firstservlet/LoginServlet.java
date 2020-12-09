@@ -50,8 +50,14 @@ public class LoginServlet extends HttpServlet {
 		}
 		return false;
 	}
-
-
-
+	private boolean validatePassword(String pwd) {
+		String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(pwd);
+		if(matcher.find()) {
+			return true;
+		}
+		return false;
+	}
 
 }
